@@ -1,0 +1,114 @@
+#!/bin/sh
+
+ES_URL="https://artifacts.elastic.co/downloads/elasticsearch"
+LS_URL="https://artifacts.elastic.co/downloads/logstash"
+KB_URL="https://artifacts.elastic.co/downloads/kibana"
+FB_URL="https://artifacts.elastic.co/downloads/beats/filebeat"
+
+VER="6.7.0"
+
+ES="elasticsearch-${VER}.tar.gz"
+LS="logstash-${VER}.tar.gz"
+KB="kibana-${VER}-linux-x86_64.tar.gz"
+FB="filebeat-${VER}-linux-x86_64.tar.gz"
+
+ES_PKGS=${ES_URL}/${ES}
+LS_PKGS=${LS_URL}/${LS}
+KB_PKGS=${KB_URL}/${KB}
+FB_PKGS=${FB_URL}/${FB}
+
+ES_DIR="elasticsearch"
+LS_DIR="logstash"
+KB_DIR="kibana"
+FB_DIR="filebeat"
+PKGS_DIR="packages"
+CONF_DIR="conf"
+SYS_DIR="/etc/systemd/system"
+
+ES_CONF="elasticsearch.yml"
+KB_CONF="kibana.yml"
+FB_CONF="filebeat.yml"
+TG_CONF1="filebeat.yml_tuto1"
+TG_CONF2="filebeat.yml_tuto2"
+
+LS_CONF1="logstash.yml"
+LS_CONF2="pipelines.yml"
+LS_CONF3="logstash-sample.conf"
+
+LS_SVC="logstash.service"
+KB_SVC="kibana.service"
+FB_SVC="filebeat.service"
+
+USER=$(whoami)
+PWD=$(pwd)
+
+git pull
+
+function install_elk_packages
+{
+
+	sudo yum -y install wget java
+	mkdir ${PKGS_DIR}
+	cd ${PKGS_DIR}
+
+	wget ${ES_PKGS}
+	wget ${LS_PKGS}
+	wget ${KB_PKGS}
+	wget ${FB_PKGS}
+
+	tar xfz ${ES}
+	tar xfz ${LS}
+	tar xfz ${KB}
+	tar xfz ${FB}
+
+	ln -s ./elasticsearch-${VER} elasticsearch
+	ln -s ./logstash-${VER} logstash
+	ln -s ./kibana-${VER}-linux-x86_64 kibana
+	ln -s ./filebeat-${VER}-linux-x86_64 filebeat
+}
+
+function es_start
+{
+	cp ${CONF_DIR}/${ES_CONF} ${PKGS_DIR}/${ES_DIR}/config/elasticsearch.yml
+	${PKGS_DIR}/${ES_DIR}/bin/elasticsearch -d
+}
+
+function kb_start
+{
+	cp ${CONF_DIR}/${KB_CONF} ${PKGS_DIR}/${KB_DIR}/config/${KB_CONF}
+	sudo cp ${CONF_DIR}/${KB_SVC} ${SYS_DIR}/${KB_SVC}
+	daemon_reload
+	sudo systemctl start ${KB_SVC}
+}
+
+function fb_start
+{
+	cp ${CONF_DIR}/${TG_CONF1} ${PKGS_DIR}/${FB_DIR}/${FB_CONF}
+	sudo cp ${CONF_DIR}/${FB_SVC} ${SYS_DIR}/${FB_SVC}
+	daemon_reload
+	sudo systemctl start ${FB_SVC}
+}
+
+function no_filter
+{
+        ${PKGS_DIR}/${LS_DIR}/bin/logstash -e 'input { stdin { } } output { stdout {} }'
+}
+
+
+if [ -z $1 ]; then
+        echo "##################### Menu ##############"
+        echo " $ ./tuto [Command]"
+        echo "#####################%%%%%%##############"
+        echo "         1 : install elk packages"
+        echo "         2 : start es, kibana, filebeat"
+        echo "         3 : standard input/output, no filters"
+        echo "#########################################";
+        exit 1;
+fi
+
+case "$1" in
+        "1" ) install_elk_packages;;
+        "2" ) es_start; kb_start; fb_start;;
+	"3" ) no_filter;;
+        *) echo "Incorrect Command" ;;
+esac
