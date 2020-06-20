@@ -89,6 +89,11 @@ function fb_start
 	sudo systemctl start ${FB_SVC}
 }
 
+function daemon_reload
+{
+	sudo systemctl daemon-reload
+}
+
 function no_filter
 {
         ${PKGS_DIR}/${LS_DIR}/bin/logstash -e 'input { stdin { } } output { stdout {} }'
