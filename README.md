@@ -88,7 +88,7 @@ output.elasticsearch:
 #### Smoke Test
 
 ##### Elasticsearch
-
+* ElasticSearch 반응 확인
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl localhost:9200
 {
@@ -111,8 +111,8 @@ output.elasticsearch:
 
 $ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'
 ```
-* Web Browser에 http://{IP}:9200
 
+* Web Browser에 http://{IP}:9200
 ![Optional Text](image/es-head1.png)
 
 ##### Kibana
