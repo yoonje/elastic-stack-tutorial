@@ -56,7 +56,8 @@ function install_elk_packages
 
 	sudo yum -y install wget java
 	sudo yum -y install bzip2 epel-release
-
+	sudo yum -y install npm
+	
 	mkdir ${PKGS_DIR}
 	cd ${PKGS_DIR}
 
