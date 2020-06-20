@@ -94,6 +94,7 @@ function es_start
 	${PKGS_DIR}/${ES_DIR}/bin/elasticsearch -d
 	cd ${PKGS_DIR}/${HEAD_DIR}
 	nohup npm run start &
+	cd ../..
 }
 
 function kb_start
