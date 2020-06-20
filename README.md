@@ -33,7 +33,7 @@
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 1
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd elastic-stack-tutorial
+[ec2-user@ip-xxx-xxx-xxx-xxx elasticsearch-head]$ /home/ec2-user/elastic-stack-tutorial
 
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 2
 ```
