@@ -29,11 +29,6 @@ ES_CONF="elasticsearch.yml"
 KB_CONF="kibana.yml"
 FB_CONF="filebeat.yml"
 TG_CONF1="filebeat.yml_tuto1"
-TG_CONF2="filebeat.yml_tuto2"
-
-LS_CONF1="logstash.yml"
-LS_CONF2="pipelines.yml"
-LS_CONF3="logstash-sample.conf"
 
 LS_SVC="logstash.service"
 KB_SVC="kibana.service"
