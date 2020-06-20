@@ -96,6 +96,9 @@ function es_start
 	nohup npm run start &
 	SCRIPT_PATH=$(dirname $(realpath $0))
 	echo $SCRIPT_PATH
+	cd ../..
+	SCRIPT_PATH=$(dirname $(realpath $0))
+	echo $SCRIPT_PATH
 }
 
 function kb_start
