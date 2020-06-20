@@ -28,9 +28,9 @@
 #########################################
 ```
 
-## tuto 1~2 - Elasticsearch, Kibana, Filebeat 세팅 및 실행
+## Tutorial 1~2 - Elasticsearch, Kibana, Filebeat 세팅 및 실행
 
-### tuto 1~2에서 해야할 일
+### Tutorial 1~2에서 해야할 일
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 1
 
@@ -39,7 +39,7 @@
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 2
 ```
 
-### tuto 1~2에서 벌어진 일
+### Tutorial 1~2에서 벌어진 일
 
 ##### Elasticsearch
 * packages/elasticsearch/config/elasticsearch.yml
@@ -99,7 +99,7 @@ $ sudo systemctl start kibana.service
 $ sudo systemctl start filebeat.service
 ```
 
-## tuto 1~2의 결과 확인
+## Tutorial 1~2의 결과 확인
 * Elasticsearch 반응 확인
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl localhost:9200
@@ -134,9 +134,9 @@ $ sudo systemctl start filebeat.service
   - http://{IP}:9100/index.html?base_uri=http://{IP}:9200
 
 
-## tuto 3 - Logstash 이용
+## Tutorial 3 - Logstash 이용
 
-### tuto 3에서 해야할 일
+### Tutorial 3에서 해야할 일
 `sh tuto 3` 실행 이후 정상적으로 시작되었으면 Hello Yoonje 텍스트를 입력하고 결과 확인 이후 `ctrl+c`로 sh tuto 3 중단
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 3
@@ -151,11 +151,11 @@ Hello Yoonje
 }
 ```
 
-### tuto 3에서 벌어진 일
+### Tutorial 3에서 벌어진 일
 `packages/logstash/bin/logstash -e 'input { stdin {} } output { stdout {} }'`를 통해 logstash가 stdin을 stdout으로 출력 
 
-## tuto 4 - Elasticsearch에 데이터 저장
-### tuto 4에서 해야할 일
+## Tutorial 4 - Elasticsearch에 데이터 저장
+### Tutorial 4에서 해야할 일
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'
 
@@ -164,13 +164,13 @@ Hello Yoonje
 [ec2-user@ip-xxx-xxx-xxx-xxx sample]$ putdata
 ```
 
-### tuto 4에서 벌어진 일
+### Tutorial 4에서 벌어진 일
 - 단일 인덱싱
 `curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'`를 통해서 데이터를 ES에 인덱싱
 - 벌크 인덱싱
 `curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/_bulk?pretty' --data-binary @logs.jsonl`를 통해 데이터를 ES에 인덱싱
 
-## tuto 5 - Kibana 활용
+## Tutorial 5 - Kibana 활용
 ![Optional Text](image/kibana1.png)
 Kibana Management 메뉴 선택
 
