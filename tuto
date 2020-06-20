@@ -42,12 +42,12 @@ FB_SVC="filebeat.service"
 USER=$(whoami)
 PWD=$(pwd)
 
-git pull
-
 function install_elk_packages
 {
-
+	git pull
+	
 	sudo yum -y install wget java
+	
 	mkdir ${PKGS_DIR}
 	cd ${PKGS_DIR}
 
