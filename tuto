@@ -21,6 +21,7 @@ ES_DIR="elasticsearch"
 LS_DIR="logstash"
 KB_DIR="kibana"
 FB_DIR="filebeat"
+HEAD_DIR="elasticsearch-head"
 PKGS_DIR="packages"
 CONF_DIR="conf"
 SYS_DIR="/etc/systemd/system"
@@ -54,8 +55,15 @@ function install_elk_packages
 	git pull
 
 	sudo yum -y install wget java
+	sudo yum -y install bzip2 epel-release
+	sudo yum -y install npm
+
 	mkdir ${PKGS_DIR}
 	cd ${PKGS_DIR}
+
+	sudo git clone https://github.com/mobz/elasticsearch-head.git
+	cd elasticsearch-head/
+	sudo npm install
 
 	wget ${ES_PKGS}
 	wget ${LS_PKGS}
@@ -82,6 +90,8 @@ function es_start
 {
 	cp ${CONF_DIR}/${ES_CONF} ${PKGS_DIR}/${ES_DIR}/config/elasticsearch.yml
 	${PKGS_DIR}/${ES_DIR}/bin/elasticsearch -d
+	cd ${PKGS_DIR}/${HEAD_DIR}
+	nohup npm run start &
 }
 
 function kb_start

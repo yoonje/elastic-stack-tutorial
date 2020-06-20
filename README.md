@@ -56,6 +56,8 @@ http.cors.allow-origin: "*"
 -Xmx4g
 ```
 
+* Head 플러그인 설치
+
 #### Kibana
 * packages/kibana/config/kibana.yml
   - server.host: "0.0.0.0" -> 외부에서 접근 가능하도록 변경
