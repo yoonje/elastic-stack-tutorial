@@ -114,7 +114,7 @@ output.elasticsearch:
 $ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'
 ```
 
-* HEAD 확인, Web Browser에 http://{IP}:9200
+* HEAD 확인, Web Browser에 http://{IP}:9100/index.html?base_uri=http://{IP}:9200
 ![Optional Text](image/es-head1.png)
 
 ##### Kibana
