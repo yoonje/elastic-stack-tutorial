@@ -90,7 +90,8 @@ function es_start
 	cp ${CONF_DIR}/${ES_CONF} ${PKGS_DIR}/${ES_DIR}/config/elasticsearch.yml
 	${PKGS_DIR}/${ES_DIR}/bin/elasticsearch -d
 	cd ${PKGS_DIR}/${HEAD_DIR}
-	nohup npm run start & && cd ..
+	nohup npm run start &
+	cd ..
 }
 
 function kb_start
