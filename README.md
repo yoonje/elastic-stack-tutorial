@@ -18,7 +18,7 @@
 
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd elastic-stack-tutorial
 
-[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ ./tuto
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto
 ##################### Menu ##############
  $ ./tuto [Command]
 #####################%%%%%%##############
@@ -31,11 +31,11 @@
 ## tuto 1~2 - Elasticsearch, Kibana, Filebeat 세팅
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ ./tuto 1
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 1
 
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd elastic-stack-tutorial
 
-[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ ./tuto 2
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 2
 ```
 
 #### Elasticsearch
@@ -129,7 +129,7 @@ $ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc
 packages/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ ./tuto 3
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 3
 [2019-03-31T14:07:08,465][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
 Hello benjamin
 /home/ec2-user/ES-Tutorial-ELK/packages/logstash-6.7.0/vendor/bundle/jruby/2.5.0/gems/awesome_print-1.7.0/lib/awesome_print/formatters/base_formatter.rb:31: warning: constant ::Fixnum is deprecated
@@ -142,7 +142,7 @@ Hello benjamin
 ```
 정상적으로 시작되었으면 Hello benjamin 이라고 텍스트를 입력
 
-ctrl+c 로 ./tuto 3 중단
+ctrl+c 로 sh tuto 3 중단
 
 ## ELK Tutorial - Kibana 활용
 키바나 인덱스 패턴 만들기
