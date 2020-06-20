@@ -14,6 +14,8 @@
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install git
 
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install npm
+
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/yoonje/elastic-stack-tutorial.git
 
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd elastic-stack-tutorial
@@ -114,7 +116,7 @@ output.elasticsearch:
 $ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'
 ```
 
-* Web Browser에 http://{IP}:9200
+* HEAD 확인, Web Browser에 http://{IP}:9200
 ![Optional Text](image/es-head1.png)
 
 ##### Kibana

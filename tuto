@@ -56,14 +56,13 @@ function install_elk_packages
 
 	sudo yum -y install wget java
 	sudo yum -y install bzip2 epel-release
-	sudo yum -y install npm
 
 	mkdir ${PKGS_DIR}
 	cd ${PKGS_DIR}
 
 	sudo git clone https://github.com/mobz/elasticsearch-head.git
-	cd elasticsearch-head/
-	sudo npm install
+	cd ${HEAD_DIR}
+	sudo npm install && cd ..
 
 	wget ${ES_PKGS}
 	wget ${LS_PKGS}
@@ -91,7 +90,7 @@ function es_start
 	cp ${CONF_DIR}/${ES_CONF} ${PKGS_DIR}/${ES_DIR}/config/elasticsearch.yml
 	${PKGS_DIR}/${ES_DIR}/bin/elasticsearch -d
 	cd ${PKGS_DIR}/${HEAD_DIR}
-	nohup npm run start &
+	nohup npm run start & && cd ..
 }
 
 function kb_start
