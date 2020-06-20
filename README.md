@@ -28,7 +28,7 @@
 #########################################
 ```
 
-## tuto 1~2 - Elasticsearch, Kibana, Filebeat 세팅
+## tuto 1~2 - Elasticsearch, Kibana, Filebeat 세팅 및 실행
 
 ### 해야할 일
 ```bash
@@ -41,7 +41,7 @@
 
 ### tuto 1~2에서 벌어진 일
 
-#### Elasticsearch
+##### Elasticsearch
 * packages/elasticsearch/config/elasticsearch.yml
   - network.host, http.cors.enabled, http.cors.allow-origin만 설정
 
@@ -62,7 +62,7 @@ http.cors.allow-origin: "*"
 * Head 플러그인 설치
   - Elasticsearch의 상태를 보여주는 오픈소스 플러그인
   
-#### Kibana
+##### Kibana
 * packages/kibana/config/kibana.yml
   - server.host: "0.0.0.0" -> 외부에서 접근 가능하도록 변경
   - elasticsearch.url: "http://localhost:9200" -> 주석해제(연결할 elasticsearch)
@@ -75,7 +75,7 @@ elasticsearch.url: "http://localhost:9200"
 kibana.index: ".kibana"
 ```
 
-#### Filebeat
+##### Filebeat
 * packages/filebeat/config/filebeat.yml
   - /home/ec2-user/elastic-stack-tutorial/sample/ 밑에 .log 파일을 스트리밍 하도록 추가
   - output.elasticsearch:에 hosts: ["localhost:9200"] 추가하여 elasticsearch 등록
@@ -91,9 +91,15 @@ output.elasticsearch:
   hosts: ["localhost:9200"]
 ```
 
-#### systemd와 service를 통해 Elastic Stack과 head 실행
+##### Elastic Stack과 head 실행
+* systemd에 service를 등록하여 Elastic Stack 실행
+```bash
+$ sudo systemctl start elasticsearch.service
+$ sudo systemctl start kibana.service
+$ sudo systemctl start filebeat.service
+```
 
-#### Smoke Test
+### tuto 1~2의 결과 확인
 
 ##### Elasticsearch
 * ElasticSearch 반응 확인
@@ -117,27 +123,25 @@ output.elasticsearch:
   "tagline" : "You Know, for Search"
 }
 ```
-```
-$ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'
-```
 
 * HEAD 확인
   - http://{IP}:9100/index.html?base_uri=http://{IP}:9200
 ![Optional Text](image/es-head1.png)
 
 ##### Kibana
-* Web Browser에 http://{IP}:5601
+* Kibana 확인
+  - Web Browser에 http://{IP}:5601
 ![Optional Text](image/kibana.png)
 
 ##### Filebeat
-* Process 확인 및 Elasticsearch에 filebeat 인덱스 생성 여부 확인
+* Elasticsearch에 filebeat 인덱스 생성 여부 확인
   - http://{IP}:9100/index.html?base_uri=http://{IP}:9200
 
 
-## tuto 3 - standard input을 logstash가 받아 standard output으로 출력
+## tuto 3 - Logstash 이용
 
 ### 해야할 일
-`sh tuto 3` 실행 이후 정상적으로 시작되었으면 Hello Yoonje라고 텍스트를 입력하고 결과 확인
+`sh tuto 3` 실행 이후 정상적으로 시작되었으면 Hello Yoonje 텍스트를 입력하고 결과 확인 이후 `ctrl+c`로 sh tuto 3 중단
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 3
 [2019-03-31T14:07:08,465][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
@@ -150,14 +154,22 @@ Hello Yoonje
           "host" => "ip-172-31-0-154.ap-southeast-1.compute.internal"
 }
 ```
-ctrl+c 로 sh tuto 3 중단
 
 #### tuto 3에서 벌어진 일
-packages/logstash/bin/logstash -e 'input { stdin {} } output { stdout {} }'를 통해 logstash가 stdin을 stdout으로 단순 출력 
+`packages/logstash/bin/logstash -e 'input { stdin {} } output { stdout {} }'`를 통해 logstash가 stdin을 stdout으로 출력 
 
-## tuto 4 - ELK Tutorial - Kibana 활용
-키바나 인덱스 패턴 만들기
+## tuto 4 - Elasticsearch에 데이터 저장
+### 해야할 일
+```bash
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ cd sample
 
+[ec2-user@ip-xxx-xxx-xxx-xxx sample]$ putdata
+```
+
+### tuto 4에서 벌어진 일
+`curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/_bulk?pretty' --data-binary @logs.jsonl`를 통해 데이터를 ES에 인덱싱
+
+## tuto 5 - Kibana 활용
 ![Optional Text](image/kibana1.png)
 Kibana Management 메뉴 선택
 

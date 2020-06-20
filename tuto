@@ -29,7 +29,6 @@ SYS_DIR="/etc/systemd/system"
 ES_CONF="elasticsearch.yml"
 KB_CONF="kibana.yml"
 FB_CONF="filebeat.yml"
-TG_CONF1="filebeat.yml_tuto1"
 
 LS_SVC="logstash.service"
 KB_SVC="kibana.service"
@@ -107,7 +106,7 @@ function kb_start
 
 function fb_start
 {
-	cp ${CONF_DIR}/${TG_CONF1} ${PKGS_DIR}/${FB_DIR}/${FB_CONF}
+	cp ${CONF_DIR}/${FB_CONF} ${PKGS_DIR}/${FB_DIR}/${FB_CONF}
 	sudo cp ${CONF_DIR}/${FB_SVC} ${SYS_DIR}/${FB_SVC}
 	daemon_reload
 	sudo systemctl start ${FB_SVC}
