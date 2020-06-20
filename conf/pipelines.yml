@@ -12,7 +12,7 @@
 #   config.string: "input { generator {} } filter { sleep { time => 1 } } output { stdout { codec => dots } }"
 - pipeline.id: my-pipe
 #   queue.type: persisted
-  path.config: "/home/ec2-user/ES-Tutorial-ELK/packages/logstash/config/*.conf"
+  path.config: "/home/ec2-user/elastic-stack-tutorial/packages/logstash/config/*.conf"
 #
 # Available options:
 #

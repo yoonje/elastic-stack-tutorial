@@ -7,7 +7,7 @@ After=network-online.target
 [Service]
 User=ec2-user
 Group=ec2-user
-ExecStart=/home/ec2-user/ES-Tutorial-ELK/packages/filebeat/filebeat -c /home/ec2-user/ES-Tutorial-ELK/packages/filebeat/filebeat.yml -path.home /home/ec2-user/ES-Tutorial-ELK/packages/filebeat -path.config /home/ec2-user/ES-Tutorial-ELK/packages/filebeat -path.data /home/ec2-user/ES-Tutorial-ELK/packages/filebeat/data -path.logs /home/ec2-user/ES-Tutorial-ELK/packages/filebeat/logs
+ExecStart=/home/ec2-user/elastic-stack-tutorial/packages/filebeat/filebeat -c /home/ec2-user/elastic-stack-tutorial/packages/filebeat/filebeat.yml -path.home /home/ec2-user/elastic-stack-tutorial/packages/filebeat -path.config /home/ec2-user/elastic-stack-tutorial/packages/filebeat -path.data /home/ec2-user/elastic-stack-tutorial/packages/filebeat/data -path.logs /home/ec2-user/elastic-stack-tutorial/packages/filebeat/logs
 Restart=always
 
 [Install]

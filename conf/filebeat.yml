@@ -2,6 +2,6 @@ filebeat.inputs:
 - type: log
   enabled: true
   paths:
-    - /home/ec2-user/ES-Tutorial-ELK/sample/*.log
+    - /home/ec2-user/elastic-stack-tutorial/sample/*.log
 output.elasticsearch:
   hosts: ["localhost:9200"]
