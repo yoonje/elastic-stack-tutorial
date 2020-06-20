@@ -14,8 +14,6 @@
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install git
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install npm
-
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/yoonje/elastic-stack-tutorial.git
 
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd elastic-stack-tutorial
