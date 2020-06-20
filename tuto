@@ -77,7 +77,7 @@ function install_elk_packages
 	ln -s ./filebeat-${VER}-linux-x86_64 filebeat
 	
 	sudo git clone https://github.com/mobz/elasticsearch-head.git
-	cd {HEAD_DIR}
+	cd ${HEAD_DIR}
 	sudo npm install
 	
 	sudo sh -c "echo 'ec2-user		soft    nofile          65536' >> /etc/security/limits.conf"
