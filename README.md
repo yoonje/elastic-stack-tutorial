@@ -30,7 +30,7 @@
 
 ## tuto 1~2 - Elasticsearch, Kibana, Filebeat 세팅 및 실행
 
-### 해야할 일
+### tuto 1~2에서 해야할 일
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 1
 
@@ -99,10 +99,8 @@ $ sudo systemctl start kibana.service
 $ sudo systemctl start filebeat.service
 ```
 
-### tuto 1~2의 결과 확인
-
-##### Elasticsearch
-* ElasticSearch 반응 확인
+## tuto 1~2의 결과 확인
+* Elasticsearch 반응 확인
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl localhost:9200
 {
@@ -128,19 +126,17 @@ $ sudo systemctl start filebeat.service
   - http://{IP}:9100/index.html?base_uri=http://{IP}:9200
 ![Optional Text](image/es-head1.png)
 
-##### Kibana
 * Kibana 확인
   - Web Browser에 http://{IP}:5601
 ![Optional Text](image/kibana.png)
 
-##### Filebeat
 * Elasticsearch에 filebeat 인덱스 생성 여부 확인
   - http://{IP}:9100/index.html?base_uri=http://{IP}:9200
 
 
 ## tuto 3 - Logstash 이용
 
-### 해야할 일
+### tuto 3에서 해야할 일
 `sh tuto 3` 실행 이후 정상적으로 시작되었으면 Hello Yoonje 텍스트를 입력하고 결과 확인 이후 `ctrl+c`로 sh tuto 3 중단
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 3
@@ -155,18 +151,23 @@ Hello Yoonje
 }
 ```
 
-#### tuto 3에서 벌어진 일
+### tuto 3에서 벌어진 일
 `packages/logstash/bin/logstash -e 'input { stdin {} } output { stdout {} }'`를 통해 logstash가 stdin을 stdout으로 출력 
 
 ## tuto 4 - Elasticsearch에 데이터 저장
-### 해야할 일
+### tuto 4에서 해야할 일
 ```bash
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'
+
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ cd sample
 
 [ec2-user@ip-xxx-xxx-xxx-xxx sample]$ putdata
 ```
 
 ### tuto 4에서 벌어진 일
+- 단일 인덱싱
+`curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'`를 통해서 데이터를 ES에 인덱싱
+- 벌크 인덱싱
 `curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/_bulk?pretty' --data-binary @logs.jsonl`를 통해 데이터를 ES에 인덱싱
 
 ## tuto 5 - Kibana 활용
