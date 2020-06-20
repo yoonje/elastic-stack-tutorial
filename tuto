@@ -75,6 +75,11 @@ function install_elk_packages
 	ln -s ./logstash-${VER} logstash
 	ln -s ./kibana-${VER}-linux-x86_64 kibana
 	ln -s ./filebeat-${VER}-linux-x86_64 filebeat
+	
+	sudo git clone https://github.com/mobz/elasticsearch-head.git
+	cd {HEAD_DIR}
+	sudo npm install
+	
 	sudo sh -c "echo 'ec2-user		soft    nofile          65536' >> /etc/security/limits.conf"
 	sudo sh -c "echo 'ec2-user		hard    nofile          65536' >> /etc/security/limits.conf"
 	sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
@@ -86,6 +91,8 @@ function es_start
 {
 	cp ${CONF_DIR}/${ES_CONF} ${PKGS_DIR}/${ES_DIR}/config/elasticsearch.yml
 	${PKGS_DIR}/${ES_DIR}/bin/elasticsearch -d
+	cd ${PKGS_DIR}/{HEAD_DIR}
+	nohup npm run start &
 }
 
 function kb_start
