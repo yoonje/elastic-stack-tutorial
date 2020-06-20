@@ -1,0 +1,7 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /home/ec2-user/ES-Tutorial-ELK/sample/*.log
+output.logstash:
+  hosts: ["localhost:5044"]

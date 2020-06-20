@@ -1,0 +1,13 @@
+[Unit]
+Description=Logstash
+Documentation=https://www.elastic.co/products/logstash
+After=network.target
+#ConditionPathExists=/etc/logstash.conf
+
+[Service]
+User=ec2-user
+Group=ec2-user
+ExecStart=/home/ec2-user/ES-Tutorial-ELK/packages/logstash/bin/logstash
+
+[Install]
+WantedBy=multi-user.target
