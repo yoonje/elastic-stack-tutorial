@@ -78,6 +78,7 @@ function install_elk_packages
 	
 	sudo git clone https://github.com/mobz/elasticsearch-head.git
 	cd ${HEAD_DIR}
+	sudo yum -y update openssl
 	sudo npm install
 	
 	sudo sh -c "echo 'ec2-user		soft    nofile          65536' >> /etc/security/limits.conf"
