@@ -30,6 +30,7 @@
 
 ## tuto 1~2 - Elasticsearch, Kibana, Filebeat 세팅
 
+### 해야할 일
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 1
 
@@ -38,9 +39,11 @@
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 2
 ```
 
+### tuto 1~2에서 벌어진 일
+
 #### Elasticsearch
 * packages/elasticsearch/config/elasticsearch.yml
-  - network.host, http.cors.enabled, http.cors.allow-origin 만 설정
+  - network.host, http.cors.enabled, http.cors.allow-origin만 설정
 
 * packages/elasticsearch/config/jvm.options
   - Xms1g, Xmx1g 를 물리 메모리의 절반으로 수정
@@ -57,12 +60,13 @@ http.cors.allow-origin: "*"
 ```
 
 * Head 플러그인 설치
-
+  - Elasticsearch의 상태를 보여주는 오픈소스 플러그인
+  
 #### Kibana
 * packages/kibana/config/kibana.yml
   - server.host: "0.0.0.0" -> 외부에서 접근 가능하도록 변경
-  - elasticsearch.url: "http://localhost:9200" -> 주석해제
-  - kibana.index: ".kibana" -> 주석해제
+  - elasticsearch.url: "http://localhost:9200" -> 주석해제(연결할 elasticsearch)
+  - kibana.index: ".kibana" -> 주석해제(키바나 기본 인덱스)
 
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ vi packages/kibana/config/kibana.yml
@@ -74,7 +78,7 @@ kibana.index: ".kibana"
 #### Filebeat
 * packages/filebeat/config/filebeat.yml
   - /home/ec2-user/elastic-stack-tutorial/sample/ 밑에 .log 파일을 스트리밍 하도록 추가
-  - output.elasticsearch: 에 hosts: ["localhost:9200"] 추가
+  - output.elasticsearch:에 hosts: ["localhost:9200"] 추가하여 elasticsearch 등록
 
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ vi packages/filebeat/config/filebeat.yml
@@ -86,6 +90,8 @@ filebeat.inputs:
 output.elasticsearch:
   hosts: ["localhost:9200"]
 ```
+
+#### systemd와 service를 통해 Elastic Stack과 head 실행
 
 #### Smoke Test
 
@@ -110,16 +116,17 @@ output.elasticsearch:
   },
   "tagline" : "You Know, for Search"
 }
-
+```
+```
 $ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'
 ```
 
-* HEAD 확인, Web Browser에 http://{IP}:9100/index.html?base_uri=http://{IP}:9200
+* HEAD 확인
+  - http://{IP}:9100/index.html?base_uri=http://{IP}:9200
 ![Optional Text](image/es-head1.png)
 
 ##### Kibana
 * Web Browser에 http://{IP}:5601
-
 ![Optional Text](image/kibana.png)
 
 ##### Filebeat
@@ -128,25 +135,27 @@ $ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc
 
 
 ## tuto 3 - standard input을 logstash가 받아 standard output으로 출력
-packages/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 
+### 해야할 일
+`sh tuto 3` 실행 이후 정상적으로 시작되었으면 Hello Yoonje라고 텍스트를 입력하고 결과 확인
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 3
 [2019-03-31T14:07:08,465][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
-Hello benjamin
+Hello Yoonje
 /home/ec2-user/ES-Tutorial-ELK/packages/logstash-6.7.0/vendor/bundle/jruby/2.5.0/gems/awesome_print-1.7.0/lib/awesome_print/formatters/base_formatter.rb:31: warning: constant ::Fixnum is deprecated
 {
     "@timestamp" => 2019-03-31T14:27:30.761Z,
       "@version" => "1",
-       "message" => "Hello benjamin",
+       "message" => "Hello Yoonje",
           "host" => "ip-172-31-0-154.ap-southeast-1.compute.internal"
 }
 ```
-정상적으로 시작되었으면 Hello benjamin 이라고 텍스트를 입력
-
 ctrl+c 로 sh tuto 3 중단
 
-## ELK Tutorial - Kibana 활용
+#### tuto 3에서 벌어진 일
+packages/logstash/bin/logstash -e 'input { stdin {} } output { stdout {} }'를 통해 logstash가 stdin을 stdout으로 단순 출력 
+
+## tuto 4 - ELK Tutorial - Kibana 활용
 키바나 인덱스 패턴 만들기
 
 ![Optional Text](image/kibana1.png)
