@@ -20,7 +20,7 @@
 
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto
 ##################### Menu ##############
- $ ./tuto [Command]
+ $ sh tuto [Command]
 #####################%%%%%%##############
          1 : install elk packages
          2 : set elk
