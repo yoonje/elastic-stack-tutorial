@@ -80,19 +80,12 @@ function install_elk_packages
 	sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
 	sudo sysctl -p
 	sudo su ec2-user
-	
-	sudo git clone https://github.com/mobz/elasticsearch-head.git
-	cd ${HEAD_DIR}
-	sudo npm install && cd ..
 }
 
 function es_start
 {
 	cp ${CONF_DIR}/${ES_CONF} ${PKGS_DIR}/${ES_DIR}/config/elasticsearch.yml
 	${PKGS_DIR}/${ES_DIR}/bin/elasticsearch -d
-	cd ${PKGS_DIR}/${HEAD_DIR}
-	nohup npm run start &
-	cd ..
 }
 
 function kb_start
