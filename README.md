@@ -11,6 +11,8 @@
 최신 버전은 [Elasticsearch 공식 홈페이지](https://www.elastic.co/downloads)에서 다운로드 가능합니다.
 
 ## ELK Tutorial 준비
+- CentOS 7.x가 설치된 RAM 8GB 이상의 계정 이름이 `ec2-user`인 시스템
+- 튜토리얼 파일 설치
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install git
 
