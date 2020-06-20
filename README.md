@@ -1,14 +1,12 @@
 # Elastic Stack Tutorial
 엘라스틱 스택 튜토리얼
 
-## Product 별 버전 상세
-```
-Latest ELK Version. 6.7.0(2019/04/01 기준 Latest Ver.)
-```
-* [Elasticsearch](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.0.tar.gz)
-* [Logstash](https://artifacts.elastic.co/downloads/logstash/logstash-6.7.0.tar.gz)
-* [Kibana](https://artifacts.elastic.co/downloads/kibana/kibana-6.7.0-x86_64.tar.gz)
-* [Filebeat](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.7.0-x86_64.tar.gz)
+## Product 별 버전
+* CentOS 7.x
+* [Elasticsearch 6.7.0](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.0.tar.gz)
+* [Logstash 6.7.0](https://artifacts.elastic.co/downloads/logstash/logstash-6.7.0.tar.gz)
+* [Kibana 6.7.0](https://artifacts.elastic.co/downloads/kibana/kibana-6.7.0-x86_64.tar.gz)
+* [Filebeat 6.7.0](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.7.0-x86_64.tar.gz)
 
 최신 버전은 [Elasticsearch 공식 홈페이지](https://www.elastic.co/downloads) 에서 다운로드 가능합니다.
 
@@ -16,33 +14,28 @@ Latest ELK Version. 6.7.0(2019/04/01 기준 Latest Ver.)
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install git
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/benjamin-btn/ES-Tutorial-ELK.git
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/yoonje/elastic-stack-tutorial.git
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd ES-Tutorial-ELK
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd elastic-stack-tutorial
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-ELK]$ ./tuto
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ ./tuto
 ##################### Menu ##############
  $ ./tuto [Command]
 #####################%%%%%%##############
          1 : install elk packages
          2 : set elk
          3 : standard input/output, no filters
-         4 : standard input/output, simple filter
-         5 : beats input, no filter, standard output
-         6 : beats input, grok filter COMBINEDAPACHELOG, standard output
-         7 : beats input, grok filter COMBINEDAPACHELOG, es output
-         8 : beats input, grok filter COMBINEDAPACHELOG, es output with systemd
 #########################################
 ```
 
-## ELK Tutorial 1~2 - Elasticsearch, Kibana, Filebeat 세팅
+## tuto 1~2 - Elasticsearch, Kibana, Filebeat 세팅
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-ELK]$ ./tuto 1
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ ./tuto 1
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd ES-Tutorial-ELK
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd elastic-stack-tutorial
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-ELK]$ ./tuto 2
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ ./tuto 2
 ```
 
 #### Elasticsearch
@@ -53,12 +46,12 @@ Latest ELK Version. 6.7.0(2019/04/01 기준 Latest Ver.)
   - Xms1g, Xmx1g 를 물리 메모리의 절반으로 수정
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-ELK]$ vi packages/elasticsearch/config/elasticsearch.yml
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ vi packages/elasticsearch/config/elasticsearch.yml
 network.host: 0.0.0.0
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-ELK]$ vi packages/elasticsearch/config/jvm.options
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ vi packages/elasticsearch/config/jvm.options
 -Xms4g
 -Xmx4g
 ```
@@ -70,7 +63,7 @@ http.cors.allow-origin: "*"
   - kibana.index: ".kibana" -> 주석해제
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-ELK]$ vi packages/kibana/config/kibana.yml
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ vi packages/kibana/config/kibana.yml
 server.host: "0.0.0.0"
 elasticsearch.url: "http://localhost:9200"
 kibana.index: ".kibana"
@@ -78,16 +71,16 @@ kibana.index: ".kibana"
 
 #### Filebeat
 * packages/filebeat/config/filebeat.yml
-  - /home/ec2-user/ES-Tutorial-ELK/sample/ 밑에 .log 파일을 스트리밍 하도록 추가
+  - /home/{USERNAME}/elastic-stack-tutorial/sample/ 밑에 .log 파일을 스트리밍 하도록 추가
   - output.elasticsearch: 에 hosts: ["localhost:9200"] 추가
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-ELK]$ vi packages/filebeat/config/filebeat.yml
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ vi packages/filebeat/config/filebeat.yml
 filebeat.inputs:
 - type: log
   enabled: true
   paths:
-    - /home/ec2-user/ES-Tutorial-ELK/sample/*.log
+    - /home/{USERNAME}/elastic-stack-tutorial/sample/*.log
 output.elasticsearch:
   hosts: ["localhost:9200"]
 ```
@@ -97,7 +90,7 @@ output.elasticsearch:
 ##### Elasticsearch
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-ELK]$ curl localhost:9200
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl localhost:9200
 {
   "name" : "KSP-DCP",
   "cluster_name" : "elasticsearch",
@@ -118,27 +111,25 @@ output.elasticsearch:
 
 $ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'
 ```
-* Web Browser 에 [http://ec2-52-221-155-168.ap-southeast-1.compute.amazonaws.com:9100/index.html?base_uri=http://{FQDN}:9200](http://ec2-52-221-155-168.ap-southeast-1.compute.amazonaws.com:9100/index.html?base_uri=http://FQDN:9200) 실행
+* Web Browser에 http://{IP}:9200
 
 ![Optional Text](image/es-head1.png)
 
 ##### Kibana
-* Web Browser 에 [http://{FQDN}:5601](http://{FQDN}:5601) 실행
+* Web Browser에 http://{IP}:5601
 
 ![Optional Text](image/kibana.png)
 
 ##### Filebeat
 * Process 확인 및 Elasticsearch에 filebeat 인덱스 생성 여부 확인
-  - http://es-head.is.daumkakao.io:9100/index.html?base_uri=http://{FQDN}:9200
+  - http://{IP}:9100/index.html?base_uri=http://{IP}:9200
 
 
-## ELK Tutorial 3 Logstash 활용
-
-#### tuto 3. filter 없이 standard input 을 logstash 가 받아 standard output 으로 출력
+## tuto 3 - standard input을 logstash가 받아 standard output으로 출력
 packages/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-ELK]$ ./tuto 3
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ ./tuto 3
 [2019-03-31T14:07:08,465][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
 Hello benjamin
 /home/ec2-user/ES-Tutorial-ELK/packages/logstash-6.7.0/vendor/bundle/jruby/2.5.0/gems/awesome_print-1.7.0/lib/awesome_print/formatters/base_formatter.rb:31: warning: constant ::Fixnum is deprecated
