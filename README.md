@@ -8,7 +8,7 @@
 * [Kibana 6.7.0](https://artifacts.elastic.co/downloads/kibana/kibana-6.7.0-x86_64.tar.gz)
 * [Filebeat 6.7.0](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.7.0-x86_64.tar.gz)
 
-최신 버전은 [Elasticsearch 공식 홈페이지](https://www.elastic.co/downloads) 에서 다운로드 가능합니다.
+최신 버전은 [Elasticsearch 공식 홈페이지](https://www.elastic.co/downloads)에서 다운로드 가능합니다.
 
 ## ELK Tutorial 준비
 ```bash
@@ -71,7 +71,7 @@ kibana.index: ".kibana"
 
 #### Filebeat
 * packages/filebeat/config/filebeat.yml
-  - /home/{USERNAME}/elastic-stack-tutorial/sample/ 밑에 .log 파일을 스트리밍 하도록 추가
+  - /home/ec2-user/elastic-stack-tutorial/sample/ 밑에 .log 파일을 스트리밍 하도록 추가
   - output.elasticsearch: 에 hosts: ["localhost:9200"] 추가
 
 ```bash
@@ -80,7 +80,7 @@ filebeat.inputs:
 - type: log
   enabled: true
   paths:
-    - /home/{USERNAME}/elastic-stack-tutorial/sample/*.log
+    - /home/ec2-user/elastic-stack-tutorial/sample/*.log
 output.elasticsearch:
   hosts: ["localhost:9200"]
 ```
