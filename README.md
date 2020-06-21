@@ -161,7 +161,7 @@ Hello Yoonje
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc -d '{ "mykey": "myvalue" }'
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ cd sample
-[ec2-user@ip-xxx-xxx-xxx-xxx sample]$ putdata
+[ec2-user@ip-xxx-xxx-xxx-xxx sample]$ sh putdata
 ```
 ### Tutorial 5에서 벌어진 일
 - 단일 인덱싱
