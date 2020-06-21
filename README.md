@@ -170,14 +170,41 @@ Hello Yoonje
 `curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/_bulk?pretty' --data-binary @logs.jsonl`를 통해 데이터를 ES에 인덱싱
 
 ## Tutorial 6 - Kibana 활용
-![Optional Text](image/kibana1.png)
+![Optional Text](image/kibana.png)
 Kibana Management 메뉴 선택
 
+![Optional Text](image/kibana1.png)
+Kibana Management 메뉴에서 인덱스 패턴 정의
+
 ![Optional Text](image/kibana2.png)
-Kibana Index Patterns 선택 후 인덱스 이름 설정(logstash-\*)
+Kibana Management 메뉴에서 인덱스 패턴 timestamp으로 설정 후 생성
 
 ![Optional Text](image/kibana3.png)
-timestamp 설정 후 인덱스 패턴 생성
+Kibana Management 메뉴에서 인덱스 패턴 확인
 
 ![Optional Text](image/kibana4.png)
-Kibana Discovery 에서 해당 패턴으로 문서 확인
+Kibana Discovery 메뉴에서 인덱스 확인
+
+![Optional Text](image/kibana5.png)
+Kibana Visualize 메뉴 선택
+
+![Optional Text](image/kibana6.png)
+Kibana Visualize 메뉴에서 시각화 타입 선택
+
+![Optional Text](image/kibana7.png)
+Kibana Visualize 메뉴에서 시각화할 인덱스 선택
+
+![Optional Text](image/kibana8.png)
+Kibana Visualize 메뉴에서 시각화 설정 정의
+
+![Optional Text](image/kibana9.png)
+Kibana Visualize 메뉴에서 시각화 결과 저장
+
+![Optional Text](image/kibana10.png)
+Kibana Dashboard 메뉴 선택
+
+![Optional Text](image/kibana11.png)
+Kibana Dashboard 메뉴에서 시각화 결과 선택
+
+![Optional Text](image/kibana12.png)
+Kibana Dashboard 메뉴에서 대시보드 확인
