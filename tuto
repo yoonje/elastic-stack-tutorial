@@ -117,6 +117,11 @@ function no_filter
         ${PKGS_DIR}/${LS_DIR}/bin/logstash -e 'input { stdin {} } output { stdout {} }'
 }
 
+function simple_filter
+{
+        ${PKGS_DIR}/${LS_DIR}/bin/logstash -f logstash_conf/simple.conf
+}
+
 function daemon_reload
 {
 	sudo systemctl daemon-reload
@@ -130,6 +135,7 @@ if [ -z $1 ]; then
         echo "         1 : install elk packages"
         echo "         2 : start es, kibana, filebeat"
         echo "         3 : standard input/output, no filters"
+		echo "         4 : standard input/output, simple filter"
         echo "#########################################";
         exit 1;
 fi
@@ -137,6 +143,7 @@ fi
 case "$1" in
         "1" ) install_elk_packages;;
         "2" ) es_start; kb_start; fb_start;;
-	"3" ) no_filter;;
+	    "3" ) no_filter;;
+	    "4" ) simple_filter;;
         *) echo "Incorrect Command" ;;
 esac
