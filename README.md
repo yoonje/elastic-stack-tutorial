@@ -141,7 +141,7 @@ $ sudo systemctl start filebeat.service
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 3
 [2019-03-31T14:07:08,465][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
 Hello Yoonje
-/home/ec2-user/ES-Tutorial-ELK/packages/logstash-6.7.0/vendor/bundle/jruby/2.5.0/gems/awesome_print-1.7.0/lib/awesome_print/formatters/base_formatter.rb:31: warning: constant ::Fixnum is deprecated
+/home/ec2-user/elastic-stack-tutorial/packages/logstash-6.7.0/vendor/bundle/jruby/2.5.0/gems/awesome_print-1.7.0/lib/awesome_print/formatters/base_formatter.rb:31: warning: constant ::Fixnum is deprecated
 {
     "@timestamp" => 2019-03-31T14:27:30.761Z,
       "@version" => "1",
