@@ -124,16 +124,13 @@ $ sudo systemctl start filebeat.service
 }
 ```
 
-* HEAD 확인
+* HEAD 반응 및 filebeat 인덱스 생성 여부 확인
   - http://{IP}:9100/index.html?base_uri=http://{IP}:9200
 ![Optional Text](image/es-head1.png)
 
 * Kibana 확인
-  - Web Browser에 http://{IP}:5601
+  - http://{IP}:5601
 ![Optional Text](image/kibana.png)
-
-* Elasticsearch에 filebeat 인덱스 생성 여부 확인
-  - http://{IP}:9100/index.html?base_uri=http://{IP}:9200
 
 
 ## Tutorial 3 - Logstash 이용
