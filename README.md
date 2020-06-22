@@ -24,6 +24,7 @@
          1 : install elk packages
          2 : set elk
          3 : standard input/output, no filters
+         4 : standard input/output, simple filter
 #########################################
 ```
 
