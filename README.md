@@ -14,6 +14,8 @@
 - CentOS 7.x가 설치된 RAM 8GB 이상의 계정 이름이 `ec2-user`인 시스템
 - 튜토리얼 파일 설치
 ```bash
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ pwd
+/home/ec2-user
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install git
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/yoonje/elastic-stack-tutorial.git
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd elastic-stack-tutorial
@@ -184,13 +186,13 @@ Kibana Management 메뉴에서 인덱스 패턴 timestamp으로 설정 후 생�
 Kibana Management 메뉴에서 인덱스 패턴 확인
 
 ![Optional Text](image/kibana4.png)
-Kibana Discovery 메뉴에서 인덱스 확인
+Kibana Discovery 메뉴에서 인덱스 확인(time range 설정 확인)
 
 ![Optional Text](image/kibana5.png)
 Kibana Visualize 메뉴 선택
 
 ![Optional Text](image/kibana6.png)
-Kibana Visualize 메뉴에서 시각화 타입 선택
+Kibana Visualize 메뉴에서 시각화 타입 선택(튜토리얼에선 tag cloud로 설정)
 
 ![Optional Text](image/kibana7.png)
 Kibana Visualize 메뉴에서 시각화할 인덱스 선택
