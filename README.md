@@ -192,7 +192,7 @@ Kibana Discovery 메뉴에서 인덱스 확인(time range 설정 확인)
 Kibana Visualize 메뉴 선택
 
 ![Optional Text](image/kibana6.png)
-Kibana Visualize 메뉴에서 시각화 타입 선택(튜토리얼에선 tag cloud로 설정)
+Kibana Visualize 메뉴에서 시각화 타입 선택(tag cloud로 설정)
 
 ![Optional Text](image/kibana7.png)
 Kibana Visualize 메뉴에서 시각화할 인덱스 선택
@@ -204,10 +204,22 @@ Kibana Visualize 메뉴에서 시각화 설정 정의
 Kibana Visualize 메뉴에서 시각화 결과 저장
 
 ![Optional Text](image/kibana10.png)
-Kibana Dashboard 메뉴 선택
+Kibana Visualize 메뉴에서 시각화 타입 선택(region map로 설정)
 
 ![Optional Text](image/kibana11.png)
-Kibana Dashboard 메뉴에서 시각화 결과 선택
+Kibana Visualize 메뉴에서 시각화할 인덱스 선택
 
 ![Optional Text](image/kibana12.png)
+Kibana Visualize 메뉴에서 시각화 설정 정의
+
+![Optional Text](image/kibana13.png)
+Kibana Visualize 메뉴에서 시각화 결과 저장
+
+![Optional Text](image/kibana14.png)
+Kibana Dashboard 메뉴 선택
+
+![Optional Text](image/kibana15.png)
+Kibana Dashboard 메뉴에서 시각화들 결과 선택
+
+![Optional Text](image/kibana16.png)
 Kibana Dashboard 메뉴에서 대시보드 확인
