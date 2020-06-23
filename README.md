@@ -1,18 +1,12 @@
 # Elastic Stack Tutorial
 김종민님의 웨비나, 박상헌님의 ELK 튜토리얼, 허민석님의 깃헙 자료를 활용하여 만든 엘라스틱 스택 튜토리얼입니다.
 
-## Product 별 버전
+## Product 버전
 * CentOS 7.x
-* [Elasticsearch 6.7.0](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.0.tar.gz)
-* [Logstash 6.7.0](https://artifacts.elastic.co/downloads/logstash/logstash-6.7.0.tar.gz)
-* [Kibana 6.7.0](https://artifacts.elastic.co/downloads/kibana/kibana-6.7.0-x86_64.tar.gz)
-* [Filebeat 6.7.0](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.7.0-x86_64.tar.gz)
+* Elastic Stack 6.7.0
 
-최신 버전은 [Elasticsearch 공식 홈페이지](https://www.elastic.co/downloads)에서 다운로드 가능합니다.
-
-## ELK Tutorial 준비
+## Tutorial 준비
 - CentOS 7.x가 설치된 RAM 8GB 이상의 계정 이름이 `ec2-user`인 시스템
-- 튜토리얼 파일 설치
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ pwd
 /home/ec2-user
