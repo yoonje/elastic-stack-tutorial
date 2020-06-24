@@ -157,24 +157,24 @@ Hello Yoonje
 ### Tutorial 5에서 해야할 일
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc/1 -d '{ "mykey": "myvalue" }'
-[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET http://localhost:9200/firstindex?pretty
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET localhost:9200/firstindex?pretty
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET localhost:9200/firstindex/_doc/1
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPUT localhost:9200/firstindex/_doc/1 -d '{ "mykey": "yourvalue" }'
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XDELETE localhost:9200/firstindex/_doc/1
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XDELETE localhost:9200/firstindex
-[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/_bulk?pretty' --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/logs.jsonl
-[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPOST http://localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/classes.json
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/x-ndjson' -XPOST localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/logs.jsonl
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPOST localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/classes.json
 ```
 
 ### Tutorial 5에서 벌어진 일
 - 단일 인덱싱: `curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc/1 -d '{ "mykey": "myvalue" }'`를 통해서 데이터를 ES에 인덱싱
-- 매핑 확인: `curl -XGET http://localhost:9200/firstindex?pretty`
+- 매핑 확인: `curl -XGET localhost:9200/firstindex?pretty`
 - 문서 조회: `curl -XGET localhost:9200/firstindex/_doc/1`
 - 문서 업데이트: `curl -H 'Content-Type: application/json' -XPUT localhost:9200/firstindex/_doc/1 -d '{ "mykey": "yourvalue" }'`
 - 문서 삭제: `curl -XDELETE localhost:9200/firstindex/_doc/1`
 - 인덱스 삭제: `curl -XDELETE localhost:9200/firstindex`
-- 벌크 인덱싱: `curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/_bulk?pretty' --data-binary @logs.jsonl`를 통해 데이터를 ES에 인덱싱
-- 벌크 인덱싱2: `curl -H 'Content-Type: application/json' -XPOST http://localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/classes.json`를 통해 데이터를 ES에 인덱싱
+- 벌크 인덱싱: `curl -H 'Content-Type: application/x-ndjson' -XPOST localhost:9200/_bulk?pretty --data-binary @logs.jsonl`를 통해 데이터를 ES에 인덱싱
+- 벌크 인덱싱2: `curl -H 'Content-Type: application/json' -XPOST localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/classes.json`를 통해 데이터를 ES에 인덱싱
 
 ## Tutorial 6 - Kibana 활용
 ![Optional Text](image/kibana.png)
