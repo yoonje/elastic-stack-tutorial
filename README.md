@@ -117,7 +117,7 @@ $ sudo systemctl start filebeat.service
 ## Tutorial 3 - Logstash 이용
 
 ### Tutorial 3에서 해야할 일
-`sh tuto 3` 실행 이후 정상적으로 시작되었으면 Hello Yoonje 텍스트를 입력하고 결과 확인 이후 `ctrl+c`로 sh tuto 3 중단
+`sh tuto 3` 실행 이후 정상적으로 시작되었으면 Hello Yoonje 텍스트를 입력하고 결과 확인 이후 `ctrl+c`로 sh tuto 3의 logstash 중단
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 3
 [2019-03-31T14:07:08,465][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
@@ -136,7 +136,7 @@ Hello Yoonje
 ## Tutorial 4 - Logstash 이용 2
 
 ### Tutorial 4에서 해야할 일
-`sh tuto 4` 실행 이후 정상적으로 시작되었으면 Hello Yoonje 텍스트를 입력하고 결과 확인 이후 `ctrl+c`로 sh tuto 4 중단
+`sh tuto 4` 실행 이후 정상적으로 시작되었으면 Hello Yoonje 텍스트를 입력하고 결과 확인 이후 `ctrl+c`로 sh tuto 4의 logstash 중단
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 4
 [2019-03-31T14:07:08,465][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
