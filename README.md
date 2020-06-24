@@ -162,9 +162,8 @@ Hello Yoonje
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPUT localhost:9200/firstindex/_doc/1 -d '{ "mykey": "yourvalue" }'
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XDELETE localhost:9200/firstindex/_doc/1
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XDELETE localhost:9200/firstindex
-[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ cd sample
-[ec2-user@ip-xxx-xxx-xxx-xxx sample]$ sh putdata
-[ec2-user@ip-xxx-xxx-xxx-xxx sample]$ sh putdata2
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/_bulk?pretty' --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/logs.jsonl
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPOST http://localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/classes.json
 ```
 
 ### Tutorial 5에서 벌어진 일
