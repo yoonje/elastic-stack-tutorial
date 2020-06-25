@@ -180,7 +180,7 @@ Hello Yoonje
 - 인덱스 삭제
   - `curl -XDELETE localhost:9200/firstindex`
 - 벌크 인덱싱
-  - `curl -H 'Content-Type: application/x-ndjson' -XPOST localhost:9200/_bulk?pretty --data-binary @logs.jsonl`를 통해 데이터를 ES에 인덱싱
+  - `curl -H 'Content-Type: application/x-ndjson' -XPOST localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/logs.jsonl`를 통해 데이터를 ES에 인덱싱
 - 벌크 인덱싱2
   - `curl -H 'Content-Type: application/json' -XPOST localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/classes.json`를 통해 데이터를 ES에 인덱싱
 
