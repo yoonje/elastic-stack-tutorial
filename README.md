@@ -38,7 +38,7 @@
 * packages/elasticsearch/config/elasticsearch.yml
   - network.host, http.cors.enabled, http.cors.allow-origin만 설정
 * packages/elasticsearch/config/jvm.options
-  - Xms1g, Xmx1g 를 물리 메모리의 절반으로 수정
+  - Xms1g, Xmx1g를 물리 메모리의 절반으로 수정
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ vi packages/elasticsearch/config/elasticsearch.yml
 network.host: 0.0.0.0
