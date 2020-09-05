@@ -1,7 +1,7 @@
 # Elastic Stack Tutorial
 김종민님의 웨비나, 박상헌님의 ELK 깃헙 자료, 허민석님의 깃헙 자료를 활용하여 만든 엘라스틱 스택 튜토리얼입니다.
 
-## Product 버전
+## Version
 * CentOS 7.x
 * Elastic Stack 6.7.0
 
