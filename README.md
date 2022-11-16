@@ -160,6 +160,7 @@ Hello Yoonje
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET localhost:9200/firstindex?pretty
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET localhost:9200/firstindex/_doc/1
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPUT localhost:9200/firstindex/_doc/1 -d '{ "mykey": "yourvalue" }'
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET localhost:9200/firstindex/_doc/1
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XDELETE localhost:9200/firstindex/_doc/1
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XDELETE localhost:9200/firstindex
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/x-ndjson' -XPOST localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/logs.jsonl
