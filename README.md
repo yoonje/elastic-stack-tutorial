@@ -68,7 +68,7 @@ kibana.index: ".kibana"
   - /home/ec2-user/elastic-stack-tutorial/sample/ 밑에 .log 파일을 스트리밍 하도록 추가
   - output.elasticsearch:에 hosts: ["localhost:9200"] 추가하여 elasticsearch 등록
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ vi packages/filebeat/config/filebeat.yml
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ vi packages/filebeat/filebeat.yml
 filebeat.inputs:
 - type: log
   enabled: true
