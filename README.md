@@ -78,9 +78,11 @@ output.elasticsearch:
   hosts: ["localhost:9200"]
 ```
 ##### Elastic Stack과 head 실행
-* systemd에 service를 등록하여 Elastic Stack 실행
+* ES 실행 및 systemd에 service를 등록하여 Elastic Stack 실행
 ```bash
-$ sudo systemctl start elasticsearch.service
+$ ~/elastic-stack-tutorial/packages/elasticsearch/bin/elasticsearch -d
+```
+```bash
 $ sudo systemctl start kibana.service
 $ sudo systemctl start filebeat.service
 ```
