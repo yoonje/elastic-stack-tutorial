@@ -6,7 +6,6 @@
 * Elastic Stack 6.7.0
 
 ## Tutorial 준비
-- [HEAD 크롬 플러그인](https://chrome.google.com/webstore/detail/multi-elasticsearch-head/cpmmilfkofbeimbmgiclohpodggeheim)
 - CentOS 7.x가 설치된 RAM 8GB 이상의 계정 이름이 `ec2-user`인 시스템
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ pwd
