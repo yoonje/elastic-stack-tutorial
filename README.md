@@ -160,7 +160,7 @@ Hello Yoonje
 ## Tutorial 5 - Logstash 이용 3
 
 ### Tutorial 5에서 해야할 일
-`sh tuto 5` 실행 이후 정상적으로 시작되었으면 아무 텍스트나 입력하고 결과 확인 이후 `ctrl+c`로 sh tuto 4의 logstash 중단
+`sh tuto 5` 실행 이후 정상적으로 시작되었으면 아무 텍스트나 입력하고 결과 확인 이후 `ctrl+c`로 sh tuto 5의 logstash 중단
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 5
 [2019-03-31T14:07:08,465][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
@@ -169,12 +169,13 @@ asdadasd
 {
           "host" => "ip-172-31-0-154.ap-southeast-1.compute.internal",
        "message" => "asdadasd",
+       "date" => "2019.03.31"
       "@version" => "1",
     "@timestamp" => 2019-03-31T14:30:27.454Z
 }
 ```
-### Tutorial 4에서 벌어진 일
-`packages/logstash/bin/logstash -f logstash_conf/ruby.conf`를 통해서 ruby filter 활용, Hello 뒤에 나오는 이름에 name key를 매칭
+### Tutorial 5에서 벌어진 일
+`packages/logstash/bin/logstash -f logstash_conf/ruby.conf`를 통해서 ruby filter 활용
 
 ## Tutorial 6 - Elasticsearch 활용
 ### Tutorial 6에서 해야할 일
