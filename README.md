@@ -6,6 +6,7 @@
 * Elastic Stack 6.7.0
 
 ## Tutorial 준비
+- [HEAD 크롬 플러그인](https://chrome.google.com/webstore/detail/multi-elasticsearch-head/cpmmilfkofbeimbmgiclohpodggeheim)
 - CentOS 7.x가 설치된 RAM 8GB 이상의 계정 이름이 `ec2-user`인 시스템
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ pwd
@@ -20,7 +21,8 @@
          1 : install elk packages
          2 : set elk
          3 : standard input/output, no filters
-         4 : standard input/output, simple filter
+         4 : standard input/output, grok filter
+         5 : standard input/output, ruby filter
 #########################################
 ```
 
@@ -153,10 +155,29 @@ Hello Yoonje
 }
 ```
 ### Tutorial 4에서 벌어진 일
-`packages/logstash/bin/logstash -f logstash_conf/simple.conf`를 통해서 grok filter 활용, Hello 뒤에 나오는 이름에 name key를 매칭
+`packages/logstash/bin/logstash -f logstash_conf/grok.conf`를 통해서 grok filter 활용, Hello 뒤에 나오는 이름에 name key를 매칭
 
-## Tutorial 5 - Elasticsearch 활용
+## Tutorial 5 - Logstash 이용 3
+
 ### Tutorial 5에서 해야할 일
+`sh tuto 5` 실행 이후 정상적으로 시작되었으면 아무 텍스트나 입력하고 결과 확인 이후 `ctrl+c`로 sh tuto 4의 logstash 중단
+```bash
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 5
+[2019-03-31T14:07:08,465][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
+asdadasd
+/home/ec2-user/elastic-stack-tutorial/packages/logstash-6.7.0/vendor/bundle/jruby/2.5.0/gems/awesome_print-1.7.0/lib/awesome_print/formatters/base_formatter.rb:31: warning: constant ::Fixnum is deprecated
+{
+          "host" => "ip-172-31-0-154.ap-southeast-1.compute.internal",
+       "message" => "asdadasd",
+      "@version" => "1",
+    "@timestamp" => 2019-03-31T14:30:27.454Z
+}
+```
+### Tutorial 4에서 벌어진 일
+`packages/logstash/bin/logstash -f logstash_conf/ruby.conf`를 통해서 ruby filter 활용, Hello 뒤에 나오는 이름에 name key를 매칭
+
+## Tutorial 6 - Elasticsearch 활용
+### Tutorial 6에서 해야할 일
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc/1 -d '{ "mykey": "myvalue" }'
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET localhost:9200/firstindex?pretty
@@ -169,7 +190,7 @@ Hello Yoonje
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPOST localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/classes.json
 ```
 
-### Tutorial 5에서 벌어진 일
+### Tutorial 6에서 벌어진 일
 - 단일 인덱싱
   - `curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc/1 -d '{ "mykey": "myvalue" }'`를 통해서 데이터를 ES에 인덱싱
 - 매핑 확인
@@ -187,7 +208,7 @@ Hello Yoonje
 - 벌크 인덱싱2
   - `curl -H 'Content-Type: application/json' -XPOST localhost:9200/_bulk?pretty --data-binary @/home/ec2-user/elastic-stack-tutorial/sample/classes.json`를 통해 데이터를 ES에 인덱싱
 
-## Tutorial 6 - Kibana 활용
+## Tutorial 7 - Kibana 활용
 ![Optional Text](image/kibana.png)
 Kibana Management 메뉴 선택
 

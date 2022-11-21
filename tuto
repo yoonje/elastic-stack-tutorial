@@ -21,7 +21,6 @@ ES_DIR="elasticsearch"
 LS_DIR="logstash"
 KB_DIR="kibana"
 FB_DIR="filebeat"
-HEAD_DIR="elasticsearch-head"
 PKGS_DIR="packages"
 CONF_DIR="conf"
 SYS_DIR="/etc/systemd/system"
@@ -75,11 +74,6 @@ function install_elk_packages
 	ln -s ./kibana-${VER}-linux-x86_64 kibana
 	ln -s ./filebeat-${VER}-linux-x86_64 filebeat
 	
-	sudo git clone https://github.com/mobz/elasticsearch-head.git
-	cd ${HEAD_DIR}
-	sudo yum -y update openssl
-	sudo npm install
-	
 	sudo sh -c "echo 'ec2-user		soft    nofile          65536' >> /etc/security/limits.conf"
 	sudo sh -c "echo 'ec2-user		hard    nofile          65536' >> /etc/security/limits.conf"
 	sudo sh -c "echo 'vm.max_map_count = 262144' >> /etc/sysctl.conf"
@@ -91,9 +85,6 @@ function es_start
 {
 	cp ${CONF_DIR}/${ES_CONF} ${PKGS_DIR}/${ES_DIR}/config/elasticsearch.yml
 	${PKGS_DIR}/${ES_DIR}/bin/elasticsearch -d
-	cd ${PKGS_DIR}/${HEAD_DIR}
-	nohup npm run start &
-	cd ../..
 }
 
 function kb_start
@@ -117,9 +108,14 @@ function no_filter
         ${PKGS_DIR}/${LS_DIR}/bin/logstash -e 'input { stdin {} } output { stdout {} }'
 }
 
-function simple_filter
+function grok_filter
 {
-        ${PKGS_DIR}/${LS_DIR}/bin/logstash -f logstash_conf/simple.conf
+        ${PKGS_DIR}/${LS_DIR}/bin/logstash -f logstash_conf/grok.conf
+}
+
+function ruby_filter
+{
+        ${PKGS_DIR}/${LS_DIR}/bin/logstash -f logstash_conf/ruby.conf
 }
 
 function daemon_reload
@@ -135,7 +131,8 @@ if [ -z $1 ]; then
         echo "         1 : install elk packages"
         echo "         2 : start es, kibana, filebeat"
         echo "         3 : standard input/output, no filters"
-		echo "         4 : standard input/output, simple filter"
+		echo "         4 : standard input/output, grok filter"
+		echo "         5 : standard input/output, ruby filter"
         echo "#########################################";
         exit 1;
 fi
@@ -145,5 +142,6 @@ case "$1" in
         "2" ) es_start; kb_start; fb_start;;
 	    "3" ) no_filter;;
 	    "4" ) simple_filter;;
+		"5" ) ruby_filter;;
         *) echo "Incorrect Command" ;;
 esac
