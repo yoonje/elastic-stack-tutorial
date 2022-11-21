@@ -161,7 +161,7 @@ Hello Yoonje
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPOST localhost:9200/firstindex/_doc/1 -d '{ "mykey": "myvalue" }'
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET localhost:9200/firstindex?pretty
-[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET localhost:9200/firstindex/_doc/1
+[ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET localhost:9200/firstindex/_doc/1?pretty
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -H 'Content-Type: application/json' -XPUT localhost:9200/firstindex/_doc/1 -d '{ "mykey": "yourvalue" }'
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XGET localhost:9200/firstindex/_doc/1
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ curl -XDELETE localhost:9200/firstindex/_doc/1
@@ -176,7 +176,7 @@ Hello Yoonje
 - 매핑 확인
   - `curl -XGET localhost:9200/firstindex?pretty`
 - 문서 조회
-  - `curl -XGET localhost:9200/firstindex/_doc/1`
+  - `curl -XGET localhost:9200/firstindex/_doc/1?pretty`
 - 문서 업데이트
   - `curl -H 'Content-Type: application/json' -XPUT localhost:9200/firstindex/_doc/1 -d '{ "mykey": "yourvalue" }'`
 - 문서 삭제
