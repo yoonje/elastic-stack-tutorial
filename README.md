@@ -31,7 +31,6 @@
 ### Tutorial 1~2에서 해야할 일
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 1
-[ec2-user@ip-xxx-xxx-xxx-xxx elasticsearch-head]$ cd ../..
 [ec2-user@ip-xxx-xxx-xxx-xxx elastic-stack-tutorial]$ sh tuto 2
 ```
 
