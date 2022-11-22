@@ -108,7 +108,7 @@ $ sudo systemctl start filebeat.service
   "tagline" : "You Know, for Search"
 }
 ```
-* Elasticsearch head 연결 및 filebeatindex 생성 여부 확인
+* Elasticsearch head 연결 후 filebeat index 생성 여부 확인
 * Kibana 확인
   - http://{IP}:5601
 ![Optional Text](image/kibana.png)
