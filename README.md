@@ -51,8 +51,6 @@ http.cors.allow-origin: "*"
 -Xms4g
 -Xmx4g
 ```
-* Head 플러그인 설치
-  - Elasticsearch의 상태를 보여주는 오픈소스 플러그인
 ##### Kibana
 * packages/kibana/config/kibana.yml
   - server.host: "0.0.0.0" -> 외부에서 접근 가능하도록 변경
@@ -110,9 +108,7 @@ $ sudo systemctl start filebeat.service
   "tagline" : "You Know, for Search"
 }
 ```
-* HEAD 반응 및 filebeat 인덱스 생성 여부 확인
-  - http://{IP}:9100/index.html?base_uri=http://{IP}:9200
-![Optional Text](image/es-head1.png)
+* Elasticsearch head 연결 및 filebeatindex 생성 여부 확인
 * Kibana 확인
   - http://{IP}:5601
 ![Optional Text](image/kibana.png)
