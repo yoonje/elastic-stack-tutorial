@@ -255,3 +255,6 @@ Kibana Dashboard 메뉴에서 시각화들 결과 선택
 
 ![Optional Text](image/kibana16.png)
 Kibana Dashboard 메뉴에서 대시보드 확인
+
+![Optional Text](image/kibana17.png)
+Kibana Dev Tools 메뉴 활용
