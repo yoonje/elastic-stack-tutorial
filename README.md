@@ -218,7 +218,7 @@ Kibana Management 메뉴에서 인덱스 패턴 timestamp으로 설정 후 생�
 Kibana Management 메뉴에서 인덱스 패턴 확인
 
 ![Optional Text](image/kibana4.png)
-Kibana Discovery 메뉴에서 인덱스 확인(time range 설정 확인)
+Kibana Discovery 메뉴에서 인덱스 및 데이터 확인 (time range 설정 주의)
 
 ![Optional Text](image/kibana5.png)
 Kibana Visualize 메뉴 선택
