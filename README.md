@@ -164,7 +164,7 @@ asdadasd
 {
           "host" => "ip-172-31-0-154.ap-southeast-1.compute.internal",
        "message" => "asdadasd",
-       "date" => "2019.03.31"
+       "today" => "2019.03.31"
       "@version" => "1",
     "@timestamp" => 2019-03-31T14:30:27.454Z
 }
