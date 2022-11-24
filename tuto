@@ -141,7 +141,7 @@ case "$1" in
         "1" ) install_elk_packages;;
         "2" ) es_start; kb_start; fb_start;;
 	    "3" ) no_filter;;
-	    "4" ) simple_filter;;
+	    "4" ) grok_filter;;
 		"5" ) ruby_filter;;
         *) echo "Incorrect Command" ;;
 esac
